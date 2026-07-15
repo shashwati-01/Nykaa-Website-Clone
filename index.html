@@ -1,354 +1,454 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Magical Glassmorphism Login</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
+    <title>Nykaa Clone</title>
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
         * {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Quicksand', sans-serif;
         }
 
-        body, html {
-            height: 100%;
-            width: 100%;
-            /* MAGICAL PURPLE FAIRY GRADIENT */
-            background: linear-gradient(135deg, 
-                #e0b0ff 0%, 
-                #c77dff 25%, 
-                #9d4edd 50%, 
-                #7b2cbf 75%, 
-                #5a189a 100%);
-            animation: fairyDream 10s ease infinite;
-            background-size: 400% 400%;
+        .f-nav {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background-color: rgb(252, 155, 171);
+            padding: 8px;
         }
 
-        @keyframes fairyDream {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        .feature {
+            display: flex;
         }
 
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 2%, transparent 20%),
-                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 2%, transparent 20%),
-                radial-gradient(circle at 40% 40%, rgba(255, 182, 255, 0.15) 3%, transparent 30%);
-            animation: sparkle 4s linear infinite;
-            pointer-events: none;
+        .feature .app {
+            display: flex;
+            align-items: center;
+            margin-inline: 15px;
         }
 
-        @keyframes sparkle {
-            0%, 100% { opacity: 0.7; }
-            50% { opacity: 1; }
+        .feature .app i {
+            margin-right: 6px;
         }
 
-        section {
+        .sec-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 40px;
+        }
+
+        .sec-nav ul,
+        .sec-nav ul li {
+            list-style: none;
+        }
+
+        .sec-nav ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        .sec-nav ul li {
+            display: flex;
+            align-items: center;
+        }
+
+        .sec-nav ul li img {
+            width: 100px;
+        }
+
+        .sec-nav ul li a {
+            margin-inline: 18px;
+        }
+
+        .sec-nav .input {
+            display: flex;
+        }
+
+        .sec-nav .input input {
+            width: 250px;
+            padding: 6px;
+            background-color: rgb(225, 217, 217);
+            border: none;
+            outline: none;
+            font-size: 16px;
+        }
+
+        .sec-nav .input button {
+            margin-left: 12px;
+            width: 80px;
+            background-color: rgb(249, 61, 92);
+            color: white;
+            font-size: 15px;
+            border: none;
+            border-radius: 5px;
+            height: 35px;
+        }
+
+        .item {
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            width: 100%;
-            padding: 20px;
-            position: relative;
+            padding: 5px 40px;
         }
 
-        .form-box {
-            position: relative;
-            width: 420px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 25px;
-            backdrop-filter: blur(20px);
-            box-shadow: 
-                0 8px 32px rgba(143, 0, 255, 0.3),
-                inset 0 1px 0 rgba(255, 255, 255, 0.2);
-            padding: 45px 40px;
-            animation: gentleFloat 6s ease-in-out infinite;
+        .item ul {
+            margin: 0;
+            padding: 0;
         }
 
-        @keyframes gentleFloat {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            33% { transform: translateY(-5px) rotate(0.5deg); }
-            66% { transform: translateY(-3px) rotate(-0.5deg); }
-        }
-
-        .form-box::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, 
-                #ff9a9e, #fad0c4, #fad0c4, #a18cd1, 
-                #fbc2eb, #a6c1ee, #ff9a9e);
-            border-radius: 27px;
-            z-index: -1;
-            animation: borderGlow 3s linear infinite;
-            background-size: 400% 400%;
-            filter: blur(5px);
-            opacity: 0.7;
-        }
-
-        @keyframes borderGlow {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .form-value {
-            width: 100%;
-        }
-
-        h2 {
-            font-size: 2.4em;
-            color: #fff;
-            text-align: center;
-            margin-bottom: 35px;
-            text-shadow: 
-                0 0 10px rgba(255, 255, 255, 0.5),
-                0 0 20px rgba(224, 176, 255, 0.3),
-                0 0 30px rgba(157, 78, 221, 0.2);
-            font-weight: 600;
-            letter-spacing: 1px;
-        }
-
-        .inputbox {
-            position: relative;
-            margin: 35px 0;
-            width: 100%;
-            border-bottom: 2px solid rgba(255, 255, 255, 0.4);
-            transition: 0.4s;
-        }
-
-        .inputbox:hover {
-            border-bottom: 2px solid rgba(255, 255, 255, 0.8);
-            transform: translateX(5px);
-        }
-
-        .inputbox ion-icon {
-            position: absolute;
-            right: 10px;
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 1.4em;
-            top: 50%;
-            transform: translateY(-50%);
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-        }
-
-        .inputbox label {
-            position: absolute;
-            top: 50%;
-            left: 8px;
-            transform: translateY(-50%);
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 1.1em;
-            pointer-events: none;
-            transition: 0.5s;
-            font-weight: 500;
-        }
-
-        .inputbox input {
-            width: 100%;
-            height: 55px;
-            background: transparent;
-            border: none;
-            outline: none;
-            font-size: 1.1em;
-            padding: 0 40px 0 10px;
-            color: #fff;
-        }
-
-        .inputbox input:focus ~ label,
-        .inputbox input:valid ~ label {
-            top: -8px;
-            color: #ffd6ff;
-            font-weight: 600;
-            text-shadow: 0 0 10px rgba(255, 214, 255, 0.5);
-        }
-
-        .forget {
-            margin: 25px 0;
-            font-size: 0.95em;
-            color: rgba(255, 255, 255, 0.9);
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .forget label {
+        .item ul li {
+            list-style: none;
             display: flex;
             align-items: center;
-            gap: 10px;
-            cursor: pointer;
+            justify-content: center;
+            gap: 38px;
         }
 
-        .forget label a {
-            color: #ffd6ff;
-            text-decoration: none;
-            margin-left: 15px;
-            transition: 0.3s;
-            font-weight: 500;
+        .item ul li a {
+            margin: 0;
+            white-space: nowrap;
         }
 
-        .forget label a:hover {
-            text-decoration: underline;
-            text-shadow: 0 0 10px rgba(255, 214, 255, 0.8);
-        }
-
-        button {
-            width: 100%;
-            height: 50px;
-            border-radius: 50px;
-            background: linear-gradient(45deg, #ffd6ff, #e7c6ff);
+        .item ul li button {
+            width: 100px;
+            height: 34px;
+            background-color: rgb(249, 61, 92);
+            color: white;
             border: none;
-            outline: none;
-            cursor: pointer;
-            font-size: 1.2em;
-            font-weight: 600;
-            margin-top: 25px;
-            transition: 0.4s;
-            color: #7b2cbf;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-            box-shadow: 0 5px 15px rgba(123, 44, 191, 0.4);
+            border-radius: 5px;
+            font-size: 15px;
         }
 
-        button:hover {
-            transform: translateY(-3px);
-            box-shadow: 
-                0 8px 25px rgba(123, 44, 191, 0.6),
-                0 0 20px rgba(255, 214, 255, 0.4);
-            background: linear-gradient(45deg, #ffe5ec, #ffd6ff);
+        .main-img img {
+            width: 100%;
         }
 
-        button:active {
-            transform: translateY(-1px);
+        .pink img {
+            width: 100%;
         }
 
-        .register {
-            font-size: 0.95em;
-            color: rgba(255, 255, 255, 0.9);
+        .pink h2 {
             text-align: center;
-            margin: 30px 0 15px;
+            padding: 10px;
         }
 
-        .register p a {
-            text-decoration: none;
-            color: #ffd6ff;
+        .card {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px;
+        }
+
+        .card img {
+            width: 45%;
+        }
+
+        .brand h2 {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .topbrd {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .topbrd img {
+            width: 45%;
+        }
+
+        .only-nykaa h2 {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .only {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .only img {
+            width: 45%;
+        }
+
+        .makeup {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 30px;
+        }
+
+        .makeup img {
+            width: 22%;
+        }
+
+        .special h2 {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .curation {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .curation img {
+            width: 45%;
+        }
+
+        .beauty h2 {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .advice {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .advice img {
+            width: 45%;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            background-color: rgb(152, 147, 147);
+            padding: 20px;
+        }
+
+        .footer ul {
+            list-style: none;
+            margin: 10px;
+        }
+
+        .footer ul li a {
+            display: block;
             font-weight: 600;
-            transition: 0.3s;
+            font-size: 13px;
+            margin: 5px 0;
         }
 
-        .register a:hover {
-            text-decoration: underline;
-            text-underline-offset: 3px;
-            text-shadow: 0 0 10px rgba(255, 214, 255, 0.8);
-        }
-
-        /* Fairy dust particles */
-        .fairy-dust {
-            position: fixed;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .fairy-dust::before {
-            content: '✨';
-            position: absolute;
-            animation: fairyFloat 5s linear infinite;
-            opacity: 0;
-        }
-
-        @keyframes fairyFloat {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
-        }
-
-        /* Responsive */
-        @media screen and (max-width: 480px) {
-            .form-box {
-                width: 90%;
-                padding: 35px 25px;
-            }
-            
-            h2 {
-                font-size: 2em;
-            }
-            
-            .inputbox {
-                margin: 25px 0;
-            }
+        .footer ul li h2 {
+            font-size: 16px;
+            margin-bottom: 10px;
         }
     </style>
 </head>
-<body>
-    <!-- Fairy dust particles -->
-    <div class="fairy-dust" style="left: 10%; animation-delay: 0s;"></div>
-    <div class="fairy-dust" style="left: 20%; animation-delay: 1s;"></div>
-    <div class="fairy-dust" style="left: 30%; animation-delay: 2s;"></div>
-    <div class="fairy-dust" style="left: 70%; animation-delay: 3s;"></div>
-    <div class="fairy-dust" style="left: 90%; animation-delay: 4s;"></div>
 
-    <section>
-        <div class="form-box">
-            <div class="form-value">
-                <form action="">
-                    <h2>✨ Magic Portal ✨</h2>
-                    <div class="inputbox">
-                        <ion-icon name="mail-outline"></ion-icon>
-                        <input type="email" name="email" required>
-                        <label>Enchanted Email</label>
-                    </div>
-                    <div class="inputbox">
-                        <ion-icon name="lock-closed-outline"></ion-icon>
-                        <input type="password" name="password" required minlength="6">
-                        <label>Secret Spell</label>
-                    </div>
-                    <div class="forget">
-                        <label>
-                            <input type="checkbox">
-                            Remember my magic
-                            <a href="#">Lost your spell?</a>
-                        </label>
-                    </div>
-                    <button type="submit">Enter Fairyland</button>
-                    <div class="register">
-                        <p>New to fairyland? <a href="#">Join the Magic</a></p>
-                    </div>
-                </form>
+<body>
+
+    <nav class="f-nav">
+        <p>BEAUTY BANANZA Get your daily dose of amazing deals</p>
+
+        <div class="feature">
+            <div class="app">
+                <i class="fa-solid fa-mobile-screen"></i>
+                <p>Get App</p>
+            </div>
+
+            <div class="app">
+                <i class="fa-solid fa-location-dot"></i>
+                <p>Get App</p>
+            </div>
+
+            <div class="app">
+                <i class="fa-solid fa-gift"></i>
+                <p>Get App</p>
+            </div>
+
+            <div class="app">
+                <i class="fa-solid fa-question"></i>
+                <p>Get App</p>
             </div>
         </div>
-    </section>
+    </nav>
 
-    <!-- Ionicons CDN -->
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <nav class="sec-nav">
+        <div class="nykaa-bar">
+            <ul>
+                <li>
+                    <img src="https://wp.logos-download.com/wp-content/uploads/2021/01/Nykaa_Logo.png"
+                        alt="Nykaa Logo">
 
-    <script>
-        // Add more fairy dust particles
-        document.addEventListener('DOMContentLoaded', function() {
-            const container = document.body;
-            for (let i = 0; i < 8; i++) {
-                const dust = document.createElement('div');
-                dust.className = 'fairy-dust';
-                dust.style.left = Math.random() * 100 + '%';
-                dust.style.animationDelay = Math.random() * 5 + 's';
-                container.appendChild(dust);
-            }
-        });
-    </script>
+                    <a>Categories</a>
+                    <a>Brands</a>
+                    <a>Luxe</a>
+                    <a>Nykka Fashion</a>
+                    <a>Beauty Advice</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="input">
+            <input type="text" placeholder="Search Nykaa">
+            <button>Sign In</button>
+        </div>
+    </nav>
+
+    <div class="item">
+        <ul>
+            <li>
+                <a>Makeup</a>
+                <a>Skincare</a>
+                <a>Appliances</a>
+                <a>Bath & Body</a>
+                <a>Natural</a>
+                <a>Mom & Baby</a>
+                <a>Men</a>
+                <a>Fragrance</a>
+                <a>Pop Ups</a>
+                <button>OFFERS</button>
+            </li>
+        </ul>
+    </div>
+
+    <div class="main-img">
+        <img src="https://images-static.nykaa.com/uploads/1ce27b38-ac2a-4e91-a790-97672cc683cf.jpg?tr=w-1200%2Ccm-pad_resize"
+            alt="Beauty Banner">
+    </div>
+
+    <div class="pink">
+        <h2>PINK FRIDAY SALE - COMING SOON!!</h2>
+
+        <img src="https://images-static.nykaa.com/uploads/a930a1f4-7e0e-4595-8f72-99b277155d0e.jpg?tr=w-1200%2Ccm-pad_resize"
+            alt="Pink Friday Sale">
+    </div>
+
+    <div class="card">
+        <img src="https://images-static.nykaa.com/uploads/321e3b5f-811e-42c5-8975-d75ed11c43d3.jpg?tr=w-600%2Ccm-pad_resize"
+            alt="Beauty Offer">
+
+        <img src="https://images-static.nykaa.com/uploads/239f5044-25fc-482a-9945-90962e90af64.jpg?tr=w-600%2Ccm-pad_resize"
+            alt="Beauty Offer">
+    </div>
+
+    <div class="brand">
+        <h2>TOP BRANDS</h2>
+
+        <div class="topbrd">
+            <img src="https://images-static.nykaa.com/uploads/b5cdbf6a-4718-45b0-aa68-fe7b47c04fc6.jpg?tr=w-600%2Ccm-pad_resize"
+                alt="Top Brand">
+
+            <img src="https://images-static.nykaa.com/uploads/0aec124f-2a1f-4fc5-9962-bcd6d5d1fb83.jpg?tr=w-600%2Ccm-pad_resize"
+                alt="Top Brand">
+        </div>
+    </div>
+
+    <div class="only-nykaa">
+        <h2>ONLY AT NYKAA</h2>
+
+        <div class="only">
+            <img src="https://images-static.nykaa.com/uploads/8900d9c0-5ab0-4659-99f9-1546151d6a3c.jpg?tr=w-600%2Ccm-pad_resize"
+                alt="Nykaa Exclusive">
+
+            <img src="https://images-static.nykaa.com/uploads/008b4a3d-589a-4ac4-80d5-66e7e10c6ade.jpg?tr=w-600%2Ccm-pad_resize"
+                alt="Nykaa Exclusive">
+        </div>
+    </div>
+
+    <div class="makeup">
+        <img src="https://images-static.nykaa.com/uploads/4e16dd68-a3c4-49b8-827b-436df563ea5c.jpg?tr=w-300%2Ccm-pad_resize"
+            alt="Makeup">
+
+        <img src="https://images-static.nykaa.com/uploads/33052185-0758-488b-8048-40e4077e24de.jpg?tr=w-300%2Ccm-pad_resize"
+            alt="Makeup">
+
+        <img src="https://images-static.nykaa.com/uploads/6751f065-5db9-4be1-9a6d-2303286de1b9.jpg?tr=w-300%2Ccm-pad_resize"
+            alt="Makeup">
+
+        <img src="https://images-static.nykaa.com/uploads/1d7a3689-364c-447c-ad0e-b1ea201e94a6.jpg?tr=w-300%2Ccm-pad_resize"
+            alt="Makeup">
+    </div>
+
+    <div class="special">
+        <h2>SPECIAL CURATIONS</h2>
+
+        <div class="curation">
+            <img src="https://images-static.nykaa.com/uploads/e2bf223b-ba25-4417-833d-8d864cbdd299.jpg?tr=w-600%2Ccm-pad_resize"
+                alt="Special Curation">
+
+            <img src="https://images-static.nykaa.com/uploads/b32ddcf1-b431-4819-8eda-05959b32d131.gif?tr=w-600%2Ccm-pad_resize"
+                alt="Special Curation">
+        </div>
+    </div>
+
+    <div class="beauty">
+        <h2>BEAUTY ADVICE</h2>
+
+        <div class="advice">
+            <img src="https://images-static.nykaa.com/uploads/e6ae051f-56e7-4079-93e4-b844af6e1d49.jpg?tr=w-600%2Ccm-pad_resize"
+                alt="Beauty Advice">
+
+            <img src="https://images-static.nykaa.com/uploads/d00c3ab0-1fd6-4fa2-9830-1c1df3105dbb.png?tr=w-600%2Ccm-pad_resize"
+                alt="Beauty Advice">
+        </div>
+    </div>
+
+    <div class="footer">
+        <ul>
+            <li>
+                <a>Who are we? Careers</a>
+                <a>Authenticity</a>
+                <a>Press</a>
+                <a>Testimonials</a>
+            </li>
+        </ul>
+
+        <ul>
+            <li>
+                <h2>HELP</h2>
+                <a>Who are we? Careers</a>
+                <a>Authenticity</a>
+                <a>Press</a>
+                <a>Testimonials</a>
+            </li>
+        </ul>
+
+        <ul>
+            <li>
+                <h2>INSPIRE ME</h2>
+                <a>Who are we? Careers</a>
+                <a>Authenticity</a>
+                <a>Press</a>
+                <a>Testimonials</a>
+            </li>
+        </ul>
+
+        <ul>
+            <li>
+                <h2>QUICK LINKS</h2>
+                <a>Who are we? Careers</a>
+                <a>Authenticity</a>
+                <a>Press</a>
+                <a>Testimonials</a>
+            </li>
+        </ul>
+
+        <ul>
+            <li>
+                <h2>TOP CATEGORIES</h2>
+                <a>Who are we? Careers</a>
+                <a>Authenticity</a>
+                <a>Press</a>
+                <a>Testimonials</a>
+            </li>
+        </ul>
+    </div>
+
 </body>
+
 </html>
