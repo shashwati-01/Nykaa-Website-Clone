@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magical Glassmorphism Login</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        body, html {
+            height: 100%;
+            width: 100%;
+            /* MAGICAL PURPLE FAIRY GRADIENT */
+            background: linear-gradient(135deg, 
+                #e0b0ff 0%, 
+                #c77dff 25%, 
+                #9d4edd 50%, 
+                #7b2cbf 75%, 
+                #5a189a 100%);
+            animation: fairyDream 10s ease infinite;
+            background-size: 400% 400%;
+        }
+
+        @keyframes fairyDream {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 2%, transparent 20%),
+                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 2%, transparent 20%),
+                radial-gradient(circle at 40% 40%, rgba(255, 182, 255, 0.15) 3%, transparent 30%);
+            animation: sparkle 4s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+
+        section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            width: 100%;
+            padding: 20px;
+            position: relative;
+        }
+
+        .form-box {
+            position: relative;
+            width: 420px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 25px;
+            backdrop-filter: blur(20px);
+            box-shadow: 
+                0 8px 32px rgba(143, 0, 255, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            padding: 45px 40px;
+            animation: gentleFloat 6s ease-in-out infinite;
+        }
+
+        @keyframes gentleFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-5px) rotate(0.5deg); }
+            66% { transform: translateY(-3px) rotate(-0.5deg); }
+        }
+
+        .form-box::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, 
+                #ff9a9e, #fad0c4, #fad0c4, #a18cd1, 
+                #fbc2eb, #a6c1ee, #ff9a9e);
+            border-radius: 27px;
+            z-index: -1;
+            animation: borderGlow 3s linear infinite;
+            background-size: 400% 400%;
+            filter: blur(5px);
+            opacity: 0.7;
+        }
+
+        @keyframes borderGlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .form-value {
+            width: 100%;
+        }
+
+        h2 {
+            font-size: 2.4em;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 35px;
+            text-shadow: 
+                0 0 10px rgba(255, 255, 255, 0.5),
+                0 0 20px rgba(224, 176, 255, 0.3),
+                0 0 30px rgba(157, 78, 221, 0.2);
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .inputbox {
+            position: relative;
+            margin: 35px 0;
+            width: 100%;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.4);
+            transition: 0.4s;
+        }
+
+        .inputbox:hover {
+            border-bottom: 2px solid rgba(255, 255, 255, 0.8);
+            transform: translateX(5px);
+        }
+
+        .inputbox ion-icon {
+            position: absolute;
+            right: 10px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.4em;
+            top: 50%;
+            transform: translateY(-50%);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .inputbox label {
+            position: absolute;
+            top: 50%;
+            left: 8px;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1em;
+            pointer-events: none;
+            transition: 0.5s;
+            font-weight: 500;
+        }
+
+        .inputbox input {
+            width: 100%;
+            height: 55px;
+            background: transparent;
+            border: none;
+            outline: none;
+            font-size: 1.1em;
+            padding: 0 40px 0 10px;
+            color: #fff;
+        }
+
+        .inputbox input:focus ~ label,
+        .inputbox input:valid ~ label {
+            top: -8px;
+            color: #ffd6ff;
+            font-weight: 600;
+            text-shadow: 0 0 10px rgba(255, 214, 255, 0.5);
+        }
+
+        .forget {
+            margin: 25px 0;
+            font-size: 0.95em;
+            color: rgba(255, 255, 255, 0.9);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .forget label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+
+        .forget label a {
+            color: #ffd6ff;
+            text-decoration: none;
+            margin-left: 15px;
+            transition: 0.3s;
+            font-weight: 500;
+        }
+
+        .forget label a:hover {
+            text-decoration: underline;
+            text-shadow: 0 0 10px rgba(255, 214, 255, 0.8);
+        }
+
+        button {
+            width: 100%;
+            height: 50px;
+            border-radius: 50px;
+            background: linear-gradient(45deg, #ffd6ff, #e7c6ff);
+            border: none;
+            outline: none;
+            cursor: pointer;
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-top: 25px;
+            transition: 0.4s;
+            color: #7b2cbf;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 15px rgba(123, 44, 191, 0.4);
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 
+                0 8px 25px rgba(123, 44, 191, 0.6),
+                0 0 20px rgba(255, 214, 255, 0.4);
+            background: linear-gradient(45deg, #ffe5ec, #ffd6ff);
+        }
+
+        button:active {
+            transform: translateY(-1px);
+        }
+
+        .register {
+            font-size: 0.95em;
+            color: rgba(255, 255, 255, 0.9);
+            text-align: center;
+            margin: 30px 0 15px;
+        }
+
+        .register p a {
+            text-decoration: none;
+            color: #ffd6ff;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .register a:hover {
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-shadow: 0 0 10px rgba(255, 214, 255, 0.8);
+        }
+
+        /* Fairy dust particles */
+        .fairy-dust {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .fairy-dust::before {
+            content: '✨';
+            position: absolute;
+            animation: fairyFloat 5s linear infinite;
+            opacity: 0;
+        }
+
+        @keyframes fairyFloat {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+        }
+
+        /* Responsive */
+        @media screen and (max-width: 480px) {
+            .form-box {
+                width: 90%;
+                padding: 35px 25px;
+            }
+            
+            h2 {
+                font-size: 2em;
+            }
+            
+            .inputbox {
+                margin: 25px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fairy dust particles -->
+    <div class="fairy-dust" style="left: 10%; animation-delay: 0s;"></div>
+    <div class="fairy-dust" style="left: 20%; animation-delay: 1s;"></div>
+    <div class="fairy-dust" style="left: 30%; animation-delay: 2s;"></div>
+    <div class="fairy-dust" style="left: 70%; animation-delay: 3s;"></div>
+    <div class="fairy-dust" style="left: 90%; animation-delay: 4s;"></div>
+
+    <section>
+        <div class="form-box">
+            <div class="form-value">
+                <form action="">
+                    <h2>✨ Magic Portal ✨</h2>
+                    <div class="inputbox">
+                        <ion-icon name="mail-outline"></ion-icon>
+                        <input type="email" name="email" required>
+                        <label>Enchanted Email</label>
+                    </div>
+                    <div class="inputbox">
+                        <ion-icon name="lock-closed-outline"></ion-icon>
+                        <input type="password" name="password" required minlength="6">
+                        <label>Secret Spell</label>
+                    </div>
+                    <div class="forget">
+                        <label>
+                            <input type="checkbox">
+                            Remember my magic
+                            <a href="#">Lost your spell?</a>
+                        </label>
+                    </div>
+                    <button type="submit">Enter Fairyland</button>
+                    <div class="register">
+                        <p>New to fairyland? <a href="#">Join the Magic</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ionicons CDN -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <script>
+        // Add more fairy dust particles
+        document.addEventListener('DOMContentLoaded', function() {
+            const container = document.body;
+            for (let i = 0; i < 8; i++) {
+                const dust = document.createElement('div');
+                dust.className = 'fairy-dust';
+                dust.style.left = Math.random() * 100 + '%';
+                dust.style.animationDelay = Math.random() * 5 + 's';
+                container.appendChild(dust);
+            }
+        });
+    </script>
+</body>
+</html>
