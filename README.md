@@ -1,5 +1,8 @@
 # Nykaa Website Clone
 
+# Live Demo
+https://shashwati-01.github.io/Nykaa-Website-Clone/
+
 A frontend clone of the Nykaa beauty shopping website built using HTML and CSS.
 
 The project recreates a beauty e-commerce homepage with navigation menus, promotional banners, brand sections, product categories, beauty advice sections, and a structured footer.
